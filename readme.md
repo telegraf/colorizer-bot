@@ -30,4 +30,4 @@ $ now -e BOT_TOKEN='...' -e ALGORITMIA_TOKEN='...'  telegraf/colorizer-bot
 
 Alternative, deploy right now without even leaving the browser:
 
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/telegraf/colorizer-bot)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/telegraf/colorizer-bot&env=BOT_TOKEN&env=ALGORITMIA_TOKEN)
