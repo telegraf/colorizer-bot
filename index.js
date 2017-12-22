@@ -15,9 +15,9 @@ async function colorize (image) {
 }
 
 const limiterConfig = {
-  window: 1000 * 60 * 10,
+  window: 1000 * 60 * 5,
   limit: 1,
-  onLimitExceeded: Composer.reply('😭 Rate limit exceed: 1 photo per 10 minutes')
+  onLimitExceeded: Composer.reply('😭 Rate limit exceeded: 1 photo per 5 minutes')
 }
 
 const bot = new Composer()
@@ -27,8 +27,8 @@ bot.command(['help', 'about'], ({ replyWithMarkdown }) => replyWithMarkdown('[�
 bot.on('photo', ratelimit(limiterConfig), fork(async (ctx) => {
   const { telegram, message, reply, replyWithPhoto, replyWithChatAction } = ctx
   await reply('🌈 Colorizing...')
-  const photoId = message.photo[1].file_id
-  const photoLink = await telegram.getFileLink(photoId)
+  const photo = message.photo[2] || message.photo[1]
+  const photoLink = await telegram.getFileLink(photo.file_id)
   const coloredImage = await colorize(photoLink)
   await replyWithChatAction('upload_photo')
   await replyWithPhoto({ source: coloredImage })
